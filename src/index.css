@@ -1,0 +1,302 @@
+
+@import "tailwindcss";
+
+
+
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 222 84% 5%;
+  --muted: 210 40% 98%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222 84% 5%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 84% 5%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --primary: 221 83% 53%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 222.2 84% 4.9%;
+  --accent: 210 40% 96%;
+  --accent-foreground: 222.2 84% 4.9%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 210 40% 98%;
+  --ring: 221 83% 53%;
+  --radius: 0.5rem;
+  
+  /* Gaming theme colors */
+  --gaming-primary: 221 83% 53%;
+  --gaming-secondary: 142 76% 36%;
+  --gaming-accent: 346 87% 43%;
+  --gaming-warning: 38 92% 50%;
+}
+
+.dark {
+  --background: 222 84% 4%;
+  --foreground: 210 40% 98%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --popover: 222 84% 4%;
+  --popover-foreground: 210 40% 98%;
+  --card: 222 84% 4%;
+  --card-foreground: 210 40% 98%;
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --primary: 217.2 91.2% 59.8%;
+  --primary-foreground: 222.2 84% 4.9%;
+  --secondary: 217.2 32.6% 17.5%;
+  --secondary-foreground: 210 40% 98%;
+  --accent: 217.2 32.6% 17.5%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  --ring: 217.2 91.2% 59.8%;
+  
+  /* Enhanced Gaming theme colors for dark mode */
+  --gaming-primary: 221 83% 65%;
+  --gaming-secondary: 142 76% 45%;
+  --gaming-accent: 346 87% 55%;
+  --gaming-warning: 38 92% 60%;
+}
+
+
+
+/* Add responsive viewport height fix */
+:root {
+  --vh: 1vh;
+}
+
+/* Responsive utilities */
+/* Add after the existing utilities in the @layer utilities section */
+@layer utilities {
+  .gaming-primary {
+    color: hsl(var(--gaming-primary));
+  }
+  
+  .gaming-secondary {
+    color: hsl(var(--gaming-secondary));
+  }
+  
+  .gaming-accent {
+    color: hsl(var(--gaming-accent));
+  }
+  
+  .gaming-warning {
+    color: hsl(var(--gaming-warning));
+  }
+  
+  .glass-effect {
+    background: hsl(var(--background) / 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid hsl(var(--border));
+  }
+  
+  .nav-blur {
+    backdrop-filter: blur(20px);
+    background: hsl(var(--background) / 0.9);
+    border-bottom: 1px solid hsl(var(--border));
+  }
+  
+  .gradient-text {
+    background: linear-gradient(135deg, hsl(var(--gaming-primary)), hsl(var(--gaming-secondary)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .gaming-card {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    transition: all 0.3s ease;
+  }
+  
+  .gaming-card:hover {
+    border-color: hsl(var(--gaming-primary));
+    box-shadow: 0 10px 25px hsl(var(--gaming-primary) / 0.1);
+  }
+  
+  @keyframes pulse-gaming {
+    0%, 100% { 
+      box-shadow: 0 0 0 0 hsl(var(--gaming-primary) / 0.4);
+    }
+    50% { 
+      box-shadow: 0 0 0 10px hsl(var(--gaming-primary) / 0);
+    }
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  @keyframes slideInUp {
+    from { 
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-pulse-gaming {
+    animation: pulse-gaming 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-slide-in-up {
+    animation: slideInUp 0.6s ease-out;
+  }
+  
+  /* Use the custom vh property for true mobile height */
+  .h-screen-dynamic {
+    height: 100vh; /* Fallback */
+    height: calc(var(--vh, 1vh) * 100);
+  }
+  
+  .min-h-screen-dynamic {
+    min-height: 100vh; /* Fallback */
+    min-height: calc(var(--vh, 1vh) * 100);
+  }
+  
+  /* Responsive text utilities */
+  .responsive-text-xl {
+    font-size: clamp(1.25rem, 5vw, 1.5rem);
+  }
+  
+  .responsive-text-2xl {
+    font-size: clamp(1.5rem, 5vw, 1.875rem);
+  }
+  
+  .responsive-text-3xl {
+    font-size: clamp(1.875rem, 5vw, 2.25rem);
+  }
+  
+  .responsive-text-4xl {
+    font-size: clamp(2.25rem, 5vw, 3rem);
+  }
+  
+  .responsive-text-5xl {
+    font-size: clamp(3rem, 8vw, 4rem);
+  }
+  
+  /* Responsive padding */
+  .responsive-p {
+    padding: clamp(1rem, 5vw, 2rem);
+  }
+  
+  .responsive-px {
+    padding-left: clamp(1rem, 5vw, 2rem);
+    padding-right: clamp(1rem, 5vw, 2rem);
+  }
+  
+  .responsive-py {
+    padding-top: clamp(1rem, 5vw, 2rem);
+    padding-bottom: clamp(1rem, 5vw, 2rem);
+  }
+  
+  /* Responsive gap */
+  .responsive-gap {
+    gap: clamp(1rem, 3vw, 2rem);
+  }
+  
+  /* Improved animations for dark mode */
+  @keyframes glow-pulse {
+    0%, 100% { 
+      box-shadow: 0 0 5px hsl(var(--gaming-primary) / 0.3),
+                 0 0 15px hsl(var(--gaming-primary) / 0.2);
+    }
+    50% { 
+      box-shadow: 0 0 10px hsl(var(--gaming-primary) / 0.5),
+                 0 0 25px hsl(var(--gaming-primary) / 0.3);
+    }
+  }
+  
+  .animate-glow-pulse {
+    animation: glow-pulse 3s ease-in-out infinite;
+  }
+}
+
+  /* Enhanced dark mode specific utilities */
+  .dark .glass-effect {
+    background: hsl(var(--background) / 0.7);
+    backdrop-filter: blur(15px);
+    border: 1px solid hsl(var(--border) / 0.8);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  }
+  
+  .dark .nav-blur {
+    backdrop-filter: blur(25px);
+    background: hsl(var(--background) / 0.85);
+    border-bottom: 1px solid hsl(var(--border) / 0.7);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .dark .gaming-card {
+    background: hsl(var(--card) / 0.9);
+    border: 1px solid hsl(var(--border));
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+  }
+  
+  .dark .gaming-card:hover {
+    border-color: hsl(var(--gaming-primary));
+    box-shadow: 0 10px 25px hsl(var(--gaming-primary) / 0.2);
+    transform: translateY(-5px);
+  }
+  
+  .dark .gradient-text {
+    background: linear-gradient(135deg, hsl(var(--gaming-primary)), hsl(var(--gaming-secondary)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Map container visibility fix for dark mode */
+  .dark .map-container {
+    background: hsl(var(--muted) / 0.2);
+    border: 1px solid hsl(var(--border));
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .dark .map-overlay {
+    background: hsl(var(--background) / 0.8);
+    border: 1px solid hsl(var(--border));
+  }
+  
+  /* Glow effects for dark mode */
+  .dark .glow-effect {
+    box-shadow: 0 0 15px hsl(var(--gaming-primary) / 0.5);
+  }
+  
+  .dark .glow-text {
+    text-shadow: 0 0 10px hsl(var(--gaming-primary) / 0.7);
+  }
+  
+  /* Enhanced animations for dark mode */
+  @keyframes glow-pulse {
+    0%, 100% { 
+      box-shadow: 0 0 5px hsl(var(--gaming-primary) / 0.3),
+                 0 0 15px hsl(var(--gaming-primary) / 0.2);
+    }
+    50% { 
+      box-shadow: 0 0 10px hsl(var(--gaming-primary) / 0.5),
+                 0 0 25px hsl(var(--gaming-primary) / 0.3);
+    }
+  }
+  
+  .dark .animate-glow-pulse {
+    animation: glow-pulse 3s ease-in-out infinite;
+  }
+
+
